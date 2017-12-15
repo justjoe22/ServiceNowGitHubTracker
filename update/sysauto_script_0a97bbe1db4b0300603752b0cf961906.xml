@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sysauto_script">
+    <sysauto_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <condition/>
+        <conditional>false</conditional>
+        <name>Import Git Issues</name>
+        <run_as display_value="System Administrator">6816f79cc0a8016401c5a33be04be441</run_as>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period/>
+        <run_start>2017-12-15 15:14:51</run_start>
+        <run_time>1970-01-01 08:00:00</run_time>
+        <run_type>on_demand</run_type>
+        <script><![CDATA[var r = new sn_ws.RESTMessageV2('GitHub', 'getIssues');
+//r.setStringParameterNoEscape('git_issue', gr.git_issue_number);
+
+//override authentication profile
+//authentication type ='basic'/ 'oauth2'
+//r.setAuthentication(authentication type, profile name);
+
+var response = r.execute();
+var responseBody = response.getBody();
+var httpStatus = response.getStatusCode();
+
+// Extract latitude and longitude values from REST Message response
+var jsonParse = JSON.parse(responseBody);
+var length = jsonParse.length;
+
+for(var v=0;v<length;v++){
+	var title = jsonParse[v].title;
+	var description = jsonParse[v].body;
+	var url = "https://github.com/justjoe22/ServiceNowGitHubTracker/issues/" + jsonParse[v].number;
+	var comment_count = parseInt(jsonParse[v].comments);
+	
+	var gr = new GlideRecord('x_82093_github_git_issues');
+	gr.addEncodedQuery("git_issue_number="+jsonParse[v].number);
+	gr.query();
+	
+	if(gr.next()){
+		
+		if(comment_count > 0){
+			var r2 = new sn_ws.RESTMessageV2('GitHub', 'getComments');
+			r2.setStringParameterNoEscape('comment_url', jsonParse[v].comments_url);
+			
+			var response_comm = r2.execute();
+			var responseBody_comm = response_comm.getBody();
+			var httpStatus_comm = response_comm.getStatusCode();
+			
+			// Extract latitude and longitude values from REST Message response
+			var jsonParse_comm = JSON.parse(responseBody_comm);
+			
+			var i = 0;
+			while(i < comment_count){
+				var comment = jsonParse_comm[i].body;
+				comment += " id:"+jsonParse_comm[i].id;
+				gr.work_notes = comment;
+				
+				i += 1;
+			}
+			
+		}
+		
+		//gr.work_notes = "Comment Count: " + comment_count;
+		gr.short_description = title;
+		gr.description = description;
+		gr.git_issue_link = url;
+		gr.update();
+	}
+	else {
+		
+	}
+}
+]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-12-15 15:57:28</sys_created_on>
+        <sys_id>0a97bbe1db4b0300603752b0cf961906</sys_id>
+        <sys_mod_count>43</sys_mod_count>
+        <sys_name>Import Git Issues</sys_name>
+        <sys_package display_value="GITHub" source="x_82093_github">600a2b51db830300603752b0cf96195c</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="GITHub">600a2b51db830300603752b0cf96195c</sys_scope>
+        <sys_update_name>sysauto_script_0a97bbe1db4b0300603752b0cf961906</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-12-15 21:11:29</sys_updated_on>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+</record_update>
