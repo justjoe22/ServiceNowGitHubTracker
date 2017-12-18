@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_rest_message_fn_parameters">
+    <sys_rest_message_fn_parameters action="INSERT_OR_UPDATE">
+        <name>comment_url</name>
+        <rest_message_function display_value="postComments">e1fd17a2db430300603752b0cf9619e9</rest_message_function>
+        <sys_class_name>sys_rest_message_fn_parameters</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-12-18 15:59:25</sys_created_on>
+        <sys_id>ef7e1ba2db430300603752b0cf9619c5</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>comment_url</sys_name>
+        <sys_package display_value="GITHub" source="x_82093_github">600a2b51db830300603752b0cf96195c</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="GITHub">600a2b51db830300603752b0cf96195c</sys_scope>
+        <sys_update_name>sys_rest_message_fn_parameters_ef7e1ba2db430300603752b0cf9619c5</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-12-18 18:02:54</sys_updated_on>
+        <type>string</type>
+        <value>https://api.github.com/repos/justjoe22/ServiceNowGitHubTracker/issues/1/comments</value>
+    </sys_rest_message_fn_parameters>
+</record_update>

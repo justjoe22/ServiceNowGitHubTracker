@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_rest_message_fn">
+    <sys_rest_message_fn action="INSERT_OR_UPDATE">
+        <authentication_type>inherit_from_parent</authentication_type>
+        <basic_auth_password/>
+        <basic_auth_profile/>
+        <basic_auth_user/>
+        <content>${data_load}</content>
+        <function_name>postComments</function_name>
+        <http_method>post</http_method>
+        <lock>false</lock>
+        <oauth2_profile/>
+        <protocol_name/>
+        <qualified_name>GitHub [ postComments ]</qualified_name>
+        <rest_endpoint>${comment_url}</rest_endpoint>
+        <rest_message display_value="GitHub">23f54c79db4b0300603752b0cf9619fc</rest_message>
+        <sys_class_name>sys_rest_message_fn</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-12-18 15:57:36</sys_created_on>
+        <sys_id>e1fd17a2db430300603752b0cf9619e9</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_name>postComments</sys_name>
+        <sys_package display_value="GITHub" source="x_82093_github">600a2b51db830300603752b0cf96195c</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="GITHub">600a2b51db830300603752b0cf96195c</sys_scope>
+        <sys_update_name>sys_rest_message_fn_e1fd17a2db430300603752b0cf9619e9</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-12-18 18:06:14</sys_updated_on>
+        <use_basic_auth>false</use_basic_auth>
+        <use_mid_server/>
+        <use_mutual_auth>false</use_mutual_auth>
+    </sys_rest_message_fn>
+</record_update>

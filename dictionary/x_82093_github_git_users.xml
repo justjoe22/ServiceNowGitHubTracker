@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Git Users" max_length="40" name="x_82093_github_git_users" type="collection">
+        <element label="GitHub Username" mandatory="true" max_length="75" name="github_username" type="string"/>
+        <element label="ServiceNow User" mandatory="true" max_length="32" name="servicenow_user" reference="sys_user" reference_qual="active=true^roles=itil^EQ" reference_qual_condition="active=true^roles=itil^EQ" type="reference"/>
+        <index name="index">
+            <element name="servicenow_user"/>
+        </index>
+    </element>
+</database>
