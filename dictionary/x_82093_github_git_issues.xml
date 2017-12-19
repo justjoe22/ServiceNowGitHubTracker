@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database>
-    <element extends="task" label="Git Issues" max_length="40" name="x_82093_github_git_issues" sizeclass="9" type="collection">
+    <element extends="task" label="Git Issues" max_length="40" name="x_82093_github_git_issues" sizeclass="7" type="collection">
         <element label="Git Issue Link" max_length="1024" name="git_issue_link" type="url"/>
         <element label="Git Issue Number" max_length="25" name="git_issue_number" type="string"/>
     </element>
