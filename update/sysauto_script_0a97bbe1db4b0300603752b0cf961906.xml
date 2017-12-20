@@ -13,66 +13,73 @@
         <run_start>2017-12-15 15:14:51</run_start>
         <run_time>1970-01-01 08:00:00</run_time>
         <run_type>periodically</run_type>
-        <script><![CDATA[//Call GitHub REST service
-var r = new sn_ws.RESTMessageV2('GitHub', 'getIssues');
-//r.setStringParameterNoEscape('git_issue', gr.git_issue_number);
+        <script><![CDATA[var getUrl = new GlideRecord('x_82093_github_git_repository');
+getUrl.query();
 
-//Get response from REST
-var response = r.execute();
-var responseBody = response.getBody();
-var httpStatus = response.getStatusCode();
-
-// Extract values from REST Message response
-var jsonParse = JSON.parse(responseBody);
-var length = jsonParse.length;
-
-//Loop through response
-for(var v=0;v<length;v++){
-	var title = jsonParse[v].title;
-	var description = jsonParse[v].body;
-	var url = "https://github.com/justjoe22/ServiceNowGitHubTracker/issues/" + jsonParse[v].number;
-	var comment_count = parseInt(jsonParse[v].comments);
+while(getUrl.next()) {
 	
-	var gitUser = new GlideRecord('x_82093_github_git_users');
-	gitUser.addEncodedQuery("github_username="+jsonParse[v].assignee.login);
-	gitUser.query();
+	//Call GitHub REST service
+	var r = new sn_ws.RESTMessageV2('GitHub', 'getIssues');
+	r.setStringParameterNoEscape('Issues_URL', getUrl.repository_url.repository_url + "/issues");
+	//https://api.github.com/repos/justjoe22/ServiceNowGitHubTracker/issues
 	
-	var user = "none";
-	if(gitUser.next()){
-		user = gitUser.servicenow_user;
-	}
+	//Get response from REST
+	var response = r.execute();
+	var responseBody = response.getBody();
+	var httpStatus = response.getStatusCode();
 	
-	var gr = new GlideRecord('x_82093_github_git_issues');
-	gr.addEncodedQuery("git_issue_number="+jsonParse[v].number);
-	gr.query();
+	// Extract values from REST Message response
+	var jsonParse = JSON.parse(responseBody);
+	var length = jsonParse.length;
 	
-	if(gr.next()){
+	//Loop through response
+	for(var v=0;v<length;v++){
+		var title = jsonParse[v].title;
+		var description = jsonParse[v].body;
+		var url = jsonParse[v].html_url;
+		var comment_count = parseInt(jsonParse[v].comments);
 		
-		if(comment_count > 0){
-			add_comments(gr, jsonParse[v].comments_url);
+		var gitUser = new GlideRecord('x_82093_github_git_users');
+		gitUser.addEncodedQuery("github_username="+jsonParse[v].assignee.login);
+		gitUser.query();
+		
+		var user = "none";
+		if(gitUser.next()){
+			user = gitUser.servicenow_user;
 		}
 		
-		//gr.work_notes = "Comment Count: " + comment_count;
-		gr.short_description = title;
-		gr.description = description;
-		gr.git_issue_link = url;
-		gr.assigned_to = user;
-		gr.update();
-	}
-	else {
-		gr.initialize();
-		gr.git_issue_number = jsonParse[v].number;
+		var gr = new GlideRecord('x_82093_github_git_issues');
+		gr.addEncodedQuery("git_issue_number="+jsonParse[v].number);
+		gr.query();
 		
-		if(comment_count > 0){
-			add_comments(gr, jsonParse[v].comments_url);
+		if(gr.next()){
+			
+			if(comment_count > 0){
+				add_comments(gr, jsonParse[v].comments_url);
+			}
+			
+			//gr.work_notes = "Comment Count: " + comment_count;
+			gr.short_description = title;
+			gr.description = description;
+			gr.git_issue_link = url;
+			gr.assigned_to = user;
+			gr.update();
 		}
-		
-		//gr.work_notes = "Comment Count: " + comment_count;
-		gr.short_description = title;
-		gr.description = description;
-		gr.git_issue_link = url;
-		gr.assigned_to = user;
-		gr.insert();
+		else {
+			gr.initialize();
+			gr.git_issue_number = jsonParse[v].number;
+			
+			if(comment_count > 0){
+				add_comments(gr, jsonParse[v].comments_url);
+			}
+			
+			//gr.work_notes = "Comment Count: " + comment_count;
+			gr.short_description = title;
+			gr.description = description;
+			gr.git_issue_link = url;
+			gr.assigned_to = user;
+			gr.insert();
+		}
 	}
 }
 
@@ -108,14 +115,14 @@ function add_comments(db_comm, comm_url) {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-12-15 15:57:28</sys_created_on>
         <sys_id>0a97bbe1db4b0300603752b0cf961906</sys_id>
-        <sys_mod_count>51</sys_mod_count>
+        <sys_mod_count>58</sys_mod_count>
         <sys_name>Import Git Issues</sys_name>
         <sys_package display_value="GITHub" source="x_82093_github">600a2b51db830300603752b0cf96195c</sys_package>
         <sys_policy/>
         <sys_scope display_value="GITHub">600a2b51db830300603752b0cf96195c</sys_scope>
         <sys_update_name>sysauto_script_0a97bbe1db4b0300603752b0cf961906</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-12-18 20:12:38</sys_updated_on>
+        <sys_updated_on>2017-12-20 19:35:44</sys_updated_on>
         <upgrade_safe>false</upgrade_safe>
     </sysauto_script>
 </record_update>
