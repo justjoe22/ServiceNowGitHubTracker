@@ -33,10 +33,20 @@
 		user = gitUser.github_username;
 	}
 	
+	var getUrl = new GlideRecord('x_82093_github_git_repository');
+	getUrl.addEncodedQuery("sys_id="+current.source_repository.sys_id);
+	getUrl.query();
+	
+	var urlRepo = "";
+	if(getUrl.next()) {
+		urlRepo = getUrl.repository_url.repository_url;
+		urlRepo += "/issues";
+	}
+	
 	var data_load = '{ "title": "' + current.short_description + '", "body": "' + current.description + '", "assignees": [ "'+ user + '" ] }';
 		var r = new sn_ws.RESTMessageV2('x_82093_github.GitHub', 'postIssue');
 		r.setStringParameterNoEscape('data_load', data_load);
-		r.setStringParameterNoEscape('issue_url', 'https://api.github.com/repos/justjoe22/ServiceNowGitHubTracker/issues');
+		r.setStringParameterNoEscape('issue_url', urlRepo);
 		
 		//override authentication profile
 		//authentication type ='basic'/ 'oauth2'
@@ -69,7 +79,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>57381feedb030300603752b0cf961909</sys_id>
-        <sys_mod_count>10</sys_mod_count>
+        <sys_mod_count>15</sys_mod_count>
         <sys_name>Save and Sync</sys_name>
         <sys_overrides/>
         <sys_package display_value="GITHub" source="x_82093_github">600a2b51db830300603752b0cf96195c</sys_package>
@@ -77,7 +87,7 @@
         <sys_scope display_value="GITHub">600a2b51db830300603752b0cf96195c</sys_scope>
         <sys_update_name>sys_ui_action_57381feedb030300603752b0cf961909</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-12-18 20:20:18</sys_updated_on>
+        <sys_updated_on>2017-12-21 16:05:02</sys_updated_on>
         <table>x_82093_github_git_issues</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>false</ui16_compatible>

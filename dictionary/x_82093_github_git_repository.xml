@@ -2,7 +2,7 @@
 <database>
     <element label="Active Repository" max_length="40" name="x_82093_github_git_repository" type="collection">
         <element label="Repository Credentials" max_length="32" name="repository_credentials" reference="sys_auth_profile_basic" type="reference"/>
-        <element label="Repository URL" max_length="32" name="repository_url" reference="x_82093_github_repository_list" type="reference"/>
+        <element display="true" label="Repository URL" max_length="32" name="repository_url" reference="x_82093_github_repository_list" type="reference"/>
         <index name="index">
             <element name="repository_url"/>
         </index>

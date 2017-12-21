@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record_update>
-    <sys_dictionary action="INSERT_OR_UPDATE" element="repository_url" table="x_82093_github_git_repository">
+    <sys_dictionary action="INSERT_OR_UPDATE" element="source_repository" table="x_82093_github_git_issues">
         <active>true</active>
         <array>false</array>
         <array_denormalized>false</array_denormalized>
@@ -15,7 +15,7 @@
         <choice/>
         <choice_field/>
         <choice_table/>
-        <column_label>Repository URL</column_label>
+        <column_label>Source Repository</column_label>
         <comments/>
         <create_roles/>
         <default_value/>
@@ -23,23 +23,23 @@
         <delete_roles/>
         <dependent/>
         <dependent_on_field/>
-        <display>true</display>
+        <display>false</display>
         <dynamic_creation>false</dynamic_creation>
         <dynamic_creation_script/>
         <dynamic_default_value/>
         <dynamic_ref_qual/>
-        <element>repository_url</element>
+        <element>source_repository</element>
         <element_reference>false</element_reference>
         <foreign_database/>
         <internal_type display_value="Reference">reference</internal_type>
-        <mandatory>false</mandatory>
+        <mandatory>true</mandatory>
         <max_length>32</max_length>
-        <name>x_82093_github_git_repository</name>
+        <name>x_82093_github_git_issues</name>
         <next_element/>
         <primary>false</primary>
         <read_only>false</read_only>
         <read_roles/>
-        <reference display_value="" name="x_82093_github_repository_list">x_82093_github_repository_list</reference>
+        <reference display_value="" name="x_82093_github_git_repository">x_82093_github_git_repository</reference>
         <reference_cascade_rule/>
         <reference_floats>false</reference_floats>
         <reference_key/>
@@ -51,16 +51,16 @@
         <staged>false</staged>
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-12-19 18:24:44</sys_created_on>
-        <sys_id>e119850bdb830300603752b0cf9619a9</sys_id>
+        <sys_created_on>2017-12-21 13:45:16</sys_created_on>
+        <sys_id>a17c9ae7db030300603752b0cf961991</sys_id>
         <sys_mod_count>1</sys_mod_count>
-        <sys_name>Repository URL</sys_name>
+        <sys_name>Source Repository</sys_name>
         <sys_package display_value="GITHub" source="x_82093_github">600a2b51db830300603752b0cf96195c</sys_package>
         <sys_policy/>
         <sys_scope display_value="GITHub">600a2b51db830300603752b0cf96195c</sys_scope>
-        <sys_update_name>sys_dictionary_x_82093_github_git_repository_repository_url</sys_update_name>
+        <sys_update_name>sys_dictionary_x_82093_github_git_issues_source_repository</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-12-21 14:34:11</sys_updated_on>
+        <sys_updated_on>2017-12-21 16:01:50</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
