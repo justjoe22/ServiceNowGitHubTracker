@@ -21,7 +21,10 @@ while(getUrl.next()) {
 	//Call GitHub REST service
 	var r = new sn_ws.RESTMessageV2('GitHub', 'getIssues');
 	r.setStringParameterNoEscape('Issues_URL', getUrl.repository_url.repository_url + "/issues");
-	//https://api.github.com/repos/justjoe22/ServiceNowGitHubTracker/issues
+	
+	//override authentication profile
+	//authentication type ='basic'/ 'oauth2'
+	//r.setAuthentication(authentication type, profile name);
 	
 	//Get response from REST
 	var response = r.execute();
@@ -90,6 +93,10 @@ function add_comments(db_comm, comm_url) {
 	var r2 = new sn_ws.RESTMessageV2('GitHub', 'getComments');
 	r2.setStringParameterNoEscape('comment_url', comm_url);
 	
+	//override authentication profile
+	//authentication type ='basic'/ 'oauth2'
+	//r.setAuthentication(authentication type, profile name);
+	
 	var response_comm = r2.execute();
 	var responseBody_comm = response_comm.getBody();
 	var httpStatus_comm = response_comm.getStatusCode();
@@ -117,14 +124,14 @@ function add_comments(db_comm, comm_url) {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-12-15 15:57:28</sys_created_on>
         <sys_id>0a97bbe1db4b0300603752b0cf961906</sys_id>
-        <sys_mod_count>59</sys_mod_count>
+        <sys_mod_count>60</sys_mod_count>
         <sys_name>Import Git Issues</sys_name>
         <sys_package display_value="GITHub" source="x_82093_github">600a2b51db830300603752b0cf96195c</sys_package>
         <sys_policy/>
         <sys_scope display_value="GITHub">600a2b51db830300603752b0cf96195c</sys_scope>
         <sys_update_name>sysauto_script_0a97bbe1db4b0300603752b0cf961906</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-12-21 18:47:53</sys_updated_on>
+        <sys_updated_on>2017-12-21 20:02:28</sys_updated_on>
         <upgrade_safe>false</upgrade_safe>
     </sysauto_script>
 </record_update>
