@@ -15,7 +15,7 @@
         <mobile_title>Git Users</mobile_title>
         <mobile_view_name>Mobile</mobile_view_name>
         <name>x_82093_github_git_users</name>
-        <order/>
+        <order>200</order>
         <override_menu_roles>false</override_menu_roles>
         <query/>
         <report/>
@@ -28,7 +28,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>50f3d0badb830300603752b0cf9619ad</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name>Git Users</sys_name>
         <sys_overrides/>
         <sys_package display_value="GITHub" source="x_82093_github">600a2b51db830300603752b0cf96195c</sys_package>
@@ -36,7 +36,7 @@
         <sys_scope display_value="GITHub">600a2b51db830300603752b0cf96195c</sys_scope>
         <sys_update_name>sys_app_module_50f3d0badb830300603752b0cf9619ad</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-12-18 19:52:38</sys_updated_on>
+        <sys_updated_on>2017-12-22 14:26:09</sys_updated_on>
         <timeline_page/>
         <title>Git Users</title>
         <uncancelable>false</uncancelable>

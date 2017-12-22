@@ -4,7 +4,7 @@
         <access>public</access>
         <authentication_type>basic</authentication_type>
         <basic_auth_password/>
-        <basic_auth_profile display_value="GitHub Creds">9b2c9c15db320300603752b0cf9619f2</basic_auth_profile>
+        <basic_auth_profile display_value="GitHub: Joe Prewitt">9b2c9c15db320300603752b0cf9619f2</basic_auth_profile>
         <basic_auth_user/>
         <description/>
         <name>GitHub</name>
