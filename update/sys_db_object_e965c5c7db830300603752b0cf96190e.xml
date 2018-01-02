@@ -33,7 +33,7 @@
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2017-12-19 20:05:08</sys_updated_on>
         <update_access>false</update_access>
-        <user_role display_value="x_82093_github.repository_list_user" name="x_82093_github.repository_list_user">c2c545c3db830300603752b0cf961937</user_role>
+        <user_role/>
         <ws_access>true</ws_access>
     </sys_db_object>
 </record_update>

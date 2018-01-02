@@ -5,7 +5,7 @@
         <hint/>
         <name>GitHub</name>
         <order/>
-        <roles>x_82093_github.git_issues_user</roles>
+        <roles/>
         <sys_class_name>sys_ui_application</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-12-14 19:47:54</sys_created_on>
