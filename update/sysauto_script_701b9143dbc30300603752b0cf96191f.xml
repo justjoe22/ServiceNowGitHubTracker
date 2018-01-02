@@ -28,15 +28,9 @@ while(gitUser.next()){
 	}
 	r.setStringParameterNoEscape('repo_url', url);
 	
-	var creds = new GlideRecord('x_82093_github_git_repository');
-	creds.addEncodedQuery("git_user=" + gitUser.sys_id);
-	creds.query();
-	
-	if(creds.next()){
-		//override authentication profile
-		r.setAuthenticationProfile('basic', creds.repository_credentials);
-	}
-	
+	//override authentication profile
+	r.setAuthenticationProfile('basic', gitUser.credentials);
+		
 	var response = r.execute();
 	var responseBody = response.getBody();
 	var httpStatus = response.getStatusCode();
@@ -73,14 +67,14 @@ while(gitUser.next()){
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-12-19 19:51:57</sys_created_on>
         <sys_id>701b9143dbc30300603752b0cf96191f</sys_id>
-        <sys_mod_count>8</sys_mod_count>
+        <sys_mod_count>9</sys_mod_count>
         <sys_name>Sync Repository List</sys_name>
         <sys_package display_value="GITHub" source="x_82093_github">600a2b51db830300603752b0cf96195c</sys_package>
         <sys_policy/>
         <sys_scope display_value="GITHub">600a2b51db830300603752b0cf96195c</sys_scope>
         <sys_update_name>sysauto_script_701b9143dbc30300603752b0cf96191f</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-12-22 14:47:58</sys_updated_on>
+        <sys_updated_on>2017-12-22 17:03:19</sys_updated_on>
         <upgrade_safe>false</upgrade_safe>
     </sysauto_script>
 </record_update>

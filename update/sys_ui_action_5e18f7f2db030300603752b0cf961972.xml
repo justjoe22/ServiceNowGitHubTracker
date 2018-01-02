@@ -38,9 +38,12 @@
 	getUrl.query();
 	
 	var urlRepo = "";
+	var authCred = "";
 	if(getUrl.next()) {
 		urlRepo = getUrl.repository_url.repository_url;
 		urlRepo += "/issues/";
+		
+		authCred = getUrl.repository_credentials;
 	}
 	
 	var data_load = '{ "title": "' + current.short_description + '", "body": "' + current.description + '", "assignees": [ "'+ user + '" ] }';
@@ -49,8 +52,8 @@
 		r.setStringParameterNoEscape('data_load', data_load);
 		
 		//override authentication profile
-		//authentication type ='basic'/ 'oauth2'
-		//r.setAuthentication(authentication type, profile name);
+		r.setAuthenticationProfile('basic', authCred);
+		
 		
 		var response = r.execute();
 		var responseBody = response.getBody();
@@ -76,7 +79,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>5e18f7f2db030300603752b0cf961972</sys_id>
-        <sys_mod_count>14</sys_mod_count>
+        <sys_mod_count>16</sys_mod_count>
         <sys_name>Update and Sync</sys_name>
         <sys_overrides/>
         <sys_package display_value="GITHub" source="x_82093_github">600a2b51db830300603752b0cf96195c</sys_package>
@@ -84,7 +87,7 @@
         <sys_scope display_value="GITHub">600a2b51db830300603752b0cf96195c</sys_scope>
         <sys_update_name>sys_ui_action_5e18f7f2db030300603752b0cf961972</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-12-21 20:04:05</sys_updated_on>
+        <sys_updated_on>2017-12-22 17:22:09</sys_updated_on>
         <table>x_82093_github_git_issues</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>false</ui16_compatible>
