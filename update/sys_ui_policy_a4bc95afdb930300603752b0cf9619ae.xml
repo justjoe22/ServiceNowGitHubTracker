@@ -9,7 +9,7 @@
         <model_id/>
         <model_table/>
         <on_load>true</on_load>
-        <order>100</order>
+        <order>-100</order>
         <reverse_if_false>true</reverse_if_false>
         <run_scripts>true</run_scripts>
         <script_false><![CDATA[function onCondition() {
@@ -23,7 +23,7 @@
 	
 }]]></script_false>
         <script_true><![CDATA[function onCondition() {
-	
+			
 	if(g_form.isNewRecord()){
 		g_form.getControl('sysverb_insert').hide();
 	}
@@ -40,7 +40,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>a4bc95afdb930300603752b0cf9619ae</sys_id>
-        <sys_mod_count>104</sys_mod_count>
+        <sys_mod_count>116</sys_mod_count>
         <sys_name>hideDefaultGitButtons</sys_name>
         <sys_overrides/>
         <sys_package display_value="GITHub" source="x_82093_github">600a2b51db830300603752b0cf96195c</sys_package>
@@ -48,7 +48,7 @@
         <sys_scope display_value="GITHub">600a2b51db830300603752b0cf96195c</sys_scope>
         <sys_update_name>sys_ui_policy_a4bc95afdb930300603752b0cf9619ae</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-01-10 21:12:50</sys_updated_on>
+        <sys_updated_on>2018-01-11 15:02:17</sys_updated_on>
         <table>x_82093_github_git_issues</table>
         <ui_type>0</ui_type>
         <view/>
