@@ -45,7 +45,7 @@
             <sys_class_name>sys_choice_set</sys_class_name>
             <sys_created_by>admin</sys_created_by>
             <sys_created_on>2017-12-19 14:17:21</sys_created_on>
-            <sys_id>fac01003db430300603752b0cf961939</sys_id>
+            <sys_id>8176ca66db330300603752b0cf961939</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_name>repository_type</sys_name>
             <sys_package display_value="GITHub" source="x_82093_github">600a2b51db830300603752b0cf96195c</sys_package>
