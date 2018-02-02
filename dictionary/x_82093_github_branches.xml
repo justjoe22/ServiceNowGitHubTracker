@@ -3,6 +3,7 @@
     <element label="Branches" max_length="40" name="x_82093_github_branches" type="collection">
         <element display="true" label="Branch Name" max_length="250" name="branch_name" type="string"/>
         <element label="Commit SHA" max_length="250" name="commit_sha" type="string"/>
+        <element label="Commit URL" max_length="1024" name="commit_url" type="url"/>
         <element label="Repository" max_length="32" name="repository" reference="x_82093_github_git_repository" type="reference"/>
         <index name="index">
             <element name="repository"/>
