@@ -17,9 +17,7 @@
 getUrl.query();
 
 while(getUrl.next()) {
-	
-	gs.info("Repo Name: " + getUrl.repository_url.repository_name + "\n\n URL: " + getUrl.repository_url.repository_url);
-	
+			
 	//Call GitHub REST service
 	var r = new sn_ws.RESTMessageV2('GitHub', 'getIssues');
 	r.setStringParameterNoEscape('Issues_URL', getUrl.repository_url.repository_url + "/issues");
@@ -35,6 +33,8 @@ while(getUrl.next()) {
 	// Extract values from REST Message response
 	var jsonParse = JSON.parse(responseBody);
 	var length = jsonParse.length;
+	
+	gs.info("Repo Name: " + getUrl.repository_url.repository_name + "\n\n URL: " + getUrl.repository_url.repository_url + "\n\n Length: " + length);
 	
 	//Loop through response
 	for(var v=0;v<length;v++){
@@ -131,14 +131,14 @@ function add_comments(db_comm, comm_url, profile_name) {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-12-15 15:57:28</sys_created_on>
         <sys_id>0a97bbe1db4b0300603752b0cf961906</sys_id>
-        <sys_mod_count>90</sys_mod_count>
+        <sys_mod_count>91</sys_mod_count>
         <sys_name>Import Git Issues</sys_name>
         <sys_package display_value="GITHub" source="x_82093_github">600a2b51db830300603752b0cf96195c</sys_package>
         <sys_policy/>
         <sys_scope display_value="GITHub">600a2b51db830300603752b0cf96195c</sys_scope>
         <sys_update_name>sysauto_script_0a97bbe1db4b0300603752b0cf961906</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-01-11 16:11:02</sys_updated_on>
+        <sys_updated_on>2018-02-05 20:39:44</sys_updated_on>
         <upgrade_safe>false</upgrade_safe>
     </sysauto_script>
 </record_update>
