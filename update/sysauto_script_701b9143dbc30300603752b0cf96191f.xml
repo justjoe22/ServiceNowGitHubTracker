@@ -13,7 +13,8 @@
         <run_start>2017-12-19 19:41:54</run_start>
         <run_time>1970-01-01 08:00:00</run_time>
         <run_type>periodically</run_type>
-        <script><![CDATA[var gitUser = new GlideRecord('x_82093_github_git_users');
+        <script><![CDATA[// Sync Repository List
+var gitUser = new GlideRecord('x_82093_github_git_users');
 gitUser.query();
 
 while(gitUser.next()){
@@ -67,14 +68,14 @@ while(gitUser.next()){
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-12-19 19:51:57</sys_created_on>
         <sys_id>701b9143dbc30300603752b0cf96191f</sys_id>
-        <sys_mod_count>9</sys_mod_count>
+        <sys_mod_count>10</sys_mod_count>
         <sys_name>Sync Repository List</sys_name>
         <sys_package display_value="GITHub" source="x_82093_github">600a2b51db830300603752b0cf96195c</sys_package>
         <sys_policy/>
         <sys_scope display_value="GITHub">600a2b51db830300603752b0cf96195c</sys_scope>
         <sys_update_name>sysauto_script_701b9143dbc30300603752b0cf96191f</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-12-22 17:03:19</sys_updated_on>
+        <sys_updated_on>2018-02-09 15:10:41</sys_updated_on>
         <upgrade_safe>false</upgrade_safe>
     </sysauto_script>
 </record_update>
