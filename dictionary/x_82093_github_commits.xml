@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Commits" max_length="40" name="x_82093_github_commits" type="collection">
+        <element label="Commit Message" max_length="250" name="commit_message" type="string"/>
+        <element label="Commit URL" max_length="1024" name="commit_url" type="url"/>
+        <element label="SHA" max_length="32" name="sha" reference="x_82093_github_branches" type="reference"/>
+        <index name="index">
+            <element name="sha"/>
+        </index>
+    </element>
+</database>

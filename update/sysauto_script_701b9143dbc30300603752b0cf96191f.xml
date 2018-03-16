@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sysauto_script">
+    <sysauto_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <condition/>
+        <conditional>false</conditional>
+        <name>Sync Repository List</name>
+        <run_as display_value="System Administrator">6816f79cc0a8016401c5a33be04be441</run_as>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period>1970-01-01 00:05:00</run_period>
+        <run_start>2017-12-19 19:41:54</run_start>
+        <run_time>1970-01-01 08:00:00</run_time>
+        <run_type>periodically</run_type>
+        <script><![CDATA[// Sync Repository List
+var gitUser = new GlideRecord('x_82093_github_git_users');
+gitUser.query();
+
+while(gitUser.next()){
+	
+	var r = new sn_ws.RESTMessageV2('x_82093_github.GitHub', 'getRepos');
+	var url = 'https://api.github.com';
+	if(gitUser.user_type=="individual" ){
+		url += '/users/' + gitUser.github_username + '/repos';
+	}
+	else {
+		url += '/orgs/' + gitUser.github_username + '/repos';
+	}
+	r.setStringParameterNoEscape('repo_url', url);
+	
+	//override authentication profile
+	r.setAuthenticationProfile('basic', gitUser.credentials);
+		
+	var response = r.execute();
+	var responseBody = response.getBody();
+	var httpStatus = response.getStatusCode();
+	
+	var jsonParse = JSON.parse(responseBody);
+	var length = jsonParse.length;
+	
+	//Loop through response
+	for(var v=0;v<length;v++){
+		var gitRepo = new GlideRecord('x_82093_github_repository_list');
+		gitRepo.addEncodedQuery("git_id=" + jsonParse[v].id);
+		gitRepo.query();
+		
+		if(gitRepo.next()){
+			gitRepo.git_user = gitUser.sys_id;
+			gitRepo.git_id = jsonParse[v].id;
+			gitRepo.repository_name = jsonParse[v].name;
+			gitRepo.repository_url = jsonParse[v].url;
+			gitRepo.update();
+		}
+		else {
+			gitRepo.initialize();
+			gitRepo.git_user = gitUser.sys_id;
+			gitRepo.git_id = jsonParse[v].id;
+			gitRepo.repository_name = jsonParse[v].name;
+			gitRepo.repository_url = jsonParse[v].url;
+			gitRepo.insert();
+		}
+	}
+	
+}
+]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-12-19 19:51:57</sys_created_on>
+        <sys_id>701b9143dbc30300603752b0cf96191f</sys_id>
+        <sys_mod_count>10</sys_mod_count>
+        <sys_name>Sync Repository List</sys_name>
+        <sys_package display_value="GITHub" source="x_82093_github">600a2b51db830300603752b0cf96195c</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="GITHub">600a2b51db830300603752b0cf96195c</sys_scope>
+        <sys_update_name>sysauto_script_701b9143dbc30300603752b0cf96191f</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-02-09 15:10:41</sys_updated_on>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+</record_update>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sysauto_script">
+    <sysauto_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <condition/>
+        <conditional>false</conditional>
+        <name>Sync Commits</name>
+        <run_as display_value="System Administrator">6816f79cc0a8016401c5a33be04be441</run_as>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period>1970-01-01 00:05:00</run_period>
+        <run_start>2018-02-02 15:08:53</run_start>
+        <run_time>1970-01-01 08:00:00</run_time>
+        <run_type>periodically</run_type>
+        <script><![CDATA[// Sync Commits
+var getUrl = new GlideRecord('x_82093_github_git_repository');
+getUrl.query();
+
+while(getUrl.next()) {
+	
+	//gs.info("Commits - Repo Name: " + getUrl.repository_url.repository_name + "\n\n URL: " + getUrl.repository_url.repository_url);
+	
+	var getBranches = new GlideRecord('x_82093_github_branches');
+	getBranches.addQuery('repository', getUrl.sys_id);
+	getBranches.query();
+	
+	while(getBranches.next()) {
+		
+		//gs.info("Commits - Branch Name: " + getBranches.branch_name);
+		
+		//Call GitHub REST service
+		var r = new sn_ws.RESTMessageV2('GitHub', 'getCommits');
+		r.setStringParameterNoEscape('commit_url', getBranches.commit_url);
+		
+		//override authentication profile
+		r.setAuthenticationProfile('basic', getUrl.repository_credentials);
+		
+		//Get response from REST
+		var response = r.execute();
+		var responseBody = response.getBody();
+		var httpStatus = response.getStatusCode();
+		
+		// Extract values from REST Message response
+		var jsonParse = JSON.parse(responseBody);
+		//var length = jsonParse.length;
+		
+		var setCommits = new GlideRecord('x_82093_github_commits');
+		setCommits.addQuery('sha', getBranches.sys_id);
+		setCommits.query();
+		
+		if(setCommits.next()){
+			
+			setCommits.commit_url = jsonParse.html_url;
+			setCommits.commit_message = jsonParse.commit.message;
+			setCommits.sha = getBranches.sys_id;
+			setCommits.update();
+		}
+		else {
+			setCommits.initialize();
+			setCommits.commit_url = jsonParse.html_url;
+			setCommits.commit_message = jsonParse.commit.message;
+			setCommits.sha = getBranches.sys_id;
+			setCommits.insert();
+		}
+		
+	}
+}
+]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-02-02 15:09:16</sys_created_on>
+        <sys_id>9c2c04e9db001300603752b0cf96196e</sys_id>
+        <sys_mod_count>32</sys_mod_count>
+        <sys_name>Sync Commits</sys_name>
+        <sys_package display_value="GITHub" source="x_82093_github">600a2b51db830300603752b0cf96195c</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="GITHub">600a2b51db830300603752b0cf96195c</sys_scope>
+        <sys_update_name>sysauto_script_9c2c04e9db001300603752b0cf96196e</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-02-09 15:10:00</sys_updated_on>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+</record_update>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_documentation element="sha" label="SHA" language="en" table="x_82093_github_commits">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>sha</element>
+            <help/>
+            <hint/>
+            <label>SHA</label>
+            <language>en</language>
+            <name>x_82093_github_commits</name>
+            <plural>SHAs</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-01-24 20:01:10</sys_created_on>
+            <sys_id>16b8fe6edb730300603752b0cf96197d</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>SHA</sys_name>
+            <sys_package display_value="GITHub" source="x_82093_github">600a2b51db830300603752b0cf96195c</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="GITHub">600a2b51db830300603752b0cf96195c</sys_scope>
+            <sys_update_name>sys_documentation_x_82093_github_commits_sha_en</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-01-24 20:01:10</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

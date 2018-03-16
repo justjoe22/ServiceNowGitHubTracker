@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Active Repository" max_length="40" name="x_82093_github_git_repository" type="collection">
+        <element label="Git User" max_length="32" name="git_user" reference="x_82093_github_git_users" type="reference"/>
+        <element label="Repository Credentials" max_length="32" name="repository_credentials" reference="sys_auth_profile_basic" type="reference"/>
+        <element display="true" label="Repository URL" max_length="32" name="repository_url" reference="x_82093_github_repository_list" type="reference"/>
+        <index name="index">
+            <element name="git_user"/>
+        </index>
+        <index name="index2">
+            <element name="repository_url"/>
+        </index>
+        <index name="index3">
+            <element name="repository_credentials"/>
+        </index>
+    </element>
+</database>

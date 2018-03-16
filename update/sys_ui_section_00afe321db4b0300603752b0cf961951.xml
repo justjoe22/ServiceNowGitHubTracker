@@ -5,13 +5,41 @@
             <element>work_notes</element>
             <position>0</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2017-12-15 14:40:02</sys_created_on>
-            <sys_id>08afe321db4b0300603752b0cf9619bc</sys_id>
+            <sys_created_on>2017-12-15 19:40:10</sys_created_on>
+            <sys_id>dc54b8bddb8b0300603752b0cf9619d3</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="Notes" display_value="Notes" name="x_82093_github_git_issues" sys_domain="global" view="Default view">00afe321db4b0300603752b0cf961951</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2017-12-15 14:40:02</sys_updated_on>
+            <sys_updated_on>2017-12-15 19:40:10</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>work_notes_list</element>
+            <position>1</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2017-12-15 19:40:10</sys_created_on>
+            <sys_id>5054b8bddb8b0300603752b0cf9619d4</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Notes" display_value="Notes" name="x_82093_github_git_issues" sys_domain="global" view="Default view">00afe321db4b0300603752b0cf961951</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2017-12-15 19:40:10</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>comments_and_work_notes</element>
+            <position>2</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2017-12-15 19:40:10</sys_created_on>
+            <sys_id>d054b8bddb8b0300603752b0cf9619d4</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Notes" display_value="Notes" name="x_82093_github_git_issues" sys_domain="global" view="Default view">00afe321db4b0300603752b0cf961951</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2017-12-15 19:40:10</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
